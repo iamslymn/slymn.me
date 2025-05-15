@@ -3,26 +3,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import ProjectImage from '@/components/ProjectImage'
-
-export const projects = [
-  {
-    id: 1,
-    title: 'Your Project Name',
-    category: 'Your Category', // e.g., "Web Development", "UI Design", etc.
-    description: 'Brief description of your project (1-2 sentences)',
-    href: '/portfolio/your-project-slug',
-    image: '/images/projects/your-project-image.jpg',
-  },
-  // Add more projects following the same structure:
-  // {
-  //   id: 2,
-  //   title: 'Second Project',
-  //   category: 'Category',
-  //   description: 'Description',
-  //   href: '/portfolio/second-project',
-  //   image: '/images/projects/second-project.jpg',
-  // },
-]
+import { projects } from '@/data/projects'
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },

@@ -4,24 +4,7 @@ import { motion } from 'framer-motion'
 import ProjectImage from '@/components/ProjectImage'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
-
-// This should match your projects data structure
-interface Project {
-  id: number
-  title: string
-  category: string
-  description: string
-  href: string
-  image: string
-  // Add more fields as needed:
-  // fullDescription?: string
-  // technologies?: string[]
-  // clientName?: string
-  // projectDate?: string
-}
-
-// Import your projects data
-import { projects } from '../page'
+import { projects, Project } from '@/data/projects'
 
 export default function ProjectPage() {
   const { slug } = useParams()
