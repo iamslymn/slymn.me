@@ -1,29 +1,25 @@
-'use client'
-
-import { motion } from 'framer-motion'
-import ProjectImage from '@/components/ProjectImage'
 import Link from 'next/link'
-import { useParams } from 'next/navigation'
+import ProjectImage from '@/components/ProjectImage'
 import { projects, Project } from '@/data/projects'
+import { notFound } from 'next/navigation'
+import { MotionDiv } from '@/components/MotionWrapper'
 
-export default function ProjectPage() {
-  const { slug } = useParams()
-  const project = projects.find((p: Project) => p.href === `/portfolio/${slug}`)
+export async function generateStaticParams() {
+  return projects.map((project) => ({
+    slug: project.href.split('/').pop(),
+  }))
+}
+
+export default function ProjectPage({ params }: { params: { slug: string } }) {
+  const project = projects.find((p: Project) => p.href === `/portfolio/${params.slug}`)
 
   if (!project) {
-    return (
-      <div className="container mx-auto px-4 py-16">
-        <h1 className="text-2xl">Project not found</h1>
-        <Link href="/portfolio" className="text-primary hover:underline">
-          Back to Portfolio
-        </Link>
-      </div>
-    )
+    notFound()
   }
 
   return (
     <div className="container mx-auto px-4 py-16">
-      <motion.div
+      <MotionDiv
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -54,7 +50,7 @@ export default function ProjectPage() {
           {/* <h2>Technologies Used</h2> */}
           {/* <ul>...</ul> */}
         </div>
-      </motion.div>
+      </MotionDiv>
     </div>
   )
 } 

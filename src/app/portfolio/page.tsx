@@ -1,9 +1,7 @@
-'use client'
-
-import { motion } from 'framer-motion'
 import Link from 'next/link'
 import ProjectImage from '@/components/ProjectImage'
 import { projects } from '@/data/projects'
+import { MotionDiv } from '@/components/MotionWrapper'
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -11,12 +9,12 @@ const fadeInUp = {
   transition: { duration: 0.5 }
 }
 
-export default function Portfolio() {
+export default function PortfolioPage() {
   return (
     <div className="pt-16">
       <section className="section">
         <div className="container">
-          <motion.div
+          <MotionDiv
             initial="initial"
             animate="animate"
             variants={fadeInUp}
@@ -26,11 +24,11 @@ export default function Portfolio() {
             <p className="subheading">
               Explore my selected projects and creative work
             </p>
-          </motion.div>
+          </MotionDiv>
 
           <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
-              <motion.div
+              <MotionDiv
                 key={project.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -58,7 +56,7 @@ export default function Portfolio() {
                     </p>
                   </div>
                 </Link>
-              </motion.div>
+              </MotionDiv>
             ))}
           </div>
         </div>
