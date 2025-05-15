@@ -2,7 +2,7 @@ import { getProjects } from '@/data/projects'
 import { PortfolioHeader } from '@/components/PortfolioHeader'
 import { PortfolioItem } from '@/components/PortfolioItem'
 
-export default function PortfolioPage() {
+export default async function PortfolioPage() {
   const projects = getProjects()
   
   return (
