@@ -1,17 +1,18 @@
 import Link from 'next/link'
 import ProjectImage from '@/components/ProjectImage'
-import { projects, Project } from '@/data/projects'
+import { getProjects, getProjectBySlug, Project } from '@/data/projects'
 import { notFound } from 'next/navigation'
 import { MotionDiv } from '@/components/MotionWrapper'
 
 export async function generateStaticParams() {
+  const projects = getProjects()
   return projects.map((project) => ({
     slug: project.href.split('/').pop(),
   }))
 }
 
 export default function ProjectPage({ params }: { params: { slug: string } }) {
-  const project = projects.find((p: Project) => p.href === `/portfolio/${params.slug}`)
+  const project = getProjectBySlug(params.slug)
 
   if (!project) {
     notFound()

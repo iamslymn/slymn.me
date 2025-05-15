@@ -7,7 +7,7 @@ export interface Project {
   image: string
 }
 
-export const projects: Project[] = [
+const projectsData: Project[] = [
   {
     id: 1,
     title: 'Your Project Name',
@@ -25,4 +25,12 @@ export const projects: Project[] = [
   //   href: '/portfolio/second-project',
   //   image: '/images/projects/second-project.jpg',
   // },
-] 
+]
+
+export function getProjects(): Project[] {
+  return projectsData
+}
+
+export function getProjectBySlug(slug: string): Project | undefined {
+  return projectsData.find((p) => p.href === `/portfolio/${slug}`)
+} 

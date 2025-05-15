@@ -1,8 +1,10 @@
-import { projects } from '@/data/projects'
+import { getProjects } from '@/data/projects'
 import { PortfolioHeader } from '@/components/PortfolioHeader'
 import { PortfolioItem } from '@/components/PortfolioItem'
 
 export default function PortfolioPage() {
+  const projects = getProjects()
+  
   return (
     <div className="pt-16">
       <section className="section">
